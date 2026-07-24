@@ -39,6 +39,9 @@ jobs:
 
   shared-docker-workflow:
     needs: test-lint
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/shared-docker.yml
     with:
       image-name: capstone-globalcart
