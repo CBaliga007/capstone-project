@@ -12,7 +12,7 @@ on:
         description: Personal access token for GHCR
         type: string
         required: true
-        default: ${{secrets.GITHUB_TOKEN}}
+        default: "${secrets.GITHUB_TOKEN}"
     outputs:
       image-digest:
         description: Published container image digest
