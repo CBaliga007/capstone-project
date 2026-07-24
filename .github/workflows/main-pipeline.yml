@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  CR_PAT: ${{ secrets.CR_PAT }}
+  CR_PAT: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   test-lint:
