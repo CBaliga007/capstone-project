@@ -8,11 +8,6 @@ on:
         type: string
         required: true
         default: ""
-      cr-pat:
-        description: Personal access token for GHCR
-        type: string
-        required: true
-        default: ""
     outputs:
       image-digest:
         description: Published container image digest
@@ -25,6 +20,9 @@ permissions:
 jobs:
   docker-build:
     name: Build and publish image
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     outputs:
       digest: ${{ steps.build.outputs.digest }}
@@ -35,7 +33,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ inputs.cr-pat }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build and push
