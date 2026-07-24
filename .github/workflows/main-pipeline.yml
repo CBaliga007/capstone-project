@@ -51,4 +51,4 @@ jobs:
       url: https://company.com
     steps:
       - name: Deploy to production
-        run: echo "Deploying ${IMAGE_DIGEST} to production..."
+        run: echo "Deploying ${jobs.shared-docker-workflow.outputs.image-digest} to production..."
